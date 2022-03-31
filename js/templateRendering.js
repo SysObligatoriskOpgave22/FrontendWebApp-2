@@ -1,4 +1,5 @@
 import { renderTemplate, setActive, showPage } from "./Utility.js"
+import { drawMatrix } from "./matrix.js";
 
 function renderMenuItems(evt) {
     const element = evt.target
@@ -11,13 +12,13 @@ function renderMenuItems(evt) {
             console.log("home")
             break
         }
+        case "matrix" : {
+            document.getElementById("pao-matrix-cards").innerHTML = drawMatrix()
+        break
+        }
         case "quiz" : {
             console.log("quiz")
             document.getElementById("next").onclick = test
-            break
-        }
-        case "matrix" : {
-            console.log("matrix")
             break
         }
     }
