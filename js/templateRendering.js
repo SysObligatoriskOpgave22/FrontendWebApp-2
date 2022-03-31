@@ -13,6 +13,7 @@ function renderMenuItems(evt) {
         }
         case "quiz" : {
             console.log("quiz")
+            document.getElementById("next").onclick = test
             break
         }
         case "matrix" : {
@@ -23,5 +24,10 @@ function renderMenuItems(evt) {
 }
 
 document.getElementById("menu").onclick = renderMenuItems;
-showPage("about") //Set the default page to render
+showPage("quiz") //Set the default page to render
 
+
+function test(){
+    console.log("Next card")
+
+}

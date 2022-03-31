@@ -45,51 +45,47 @@
     <h2>Quiz</h2>
 
     <div id="card"></div>
+    <form>
+        <label for="personList">Person</label>
+        <input list="personList" name="personList">
+        <input type="checkbox">
+        <datalist id="personList">
+            <option value="Usain Bolt">
+            <option value="Michael Moore">
+            <option value="Barack Obama">
+            <option value="Osama Bin Laden">
+            <option value="Tina Turner">
+        </datalist>
+        <br>
+        <label for="actionList">Action</label>
+        <input list="actionList" name="actionList">
+        <input type="checkbox">
+        <datalist id="actionList">
+            <option value="Chases">
+            <option value="Plays">
+            <option value="Run">
+        </datalist>
+        <br>
+        <label for="objectList">Object</label>
+        <input list="objectList" name="objectList">
+        <input type="checkbox">
+        <datalist id="objectList">
+            <option value="Cheetah">
+            <option value="Fork">
+        </datalist>
+        <br>
+        <label for="cardList">Card</label>
+        <input list="cardList" name="cardList">
+        <input type="checkbox">
+        <datalist id="cardList">
+            <option value="Cheetah">
+            <option value="Fork">
+        </datalist>
 
-    <label for="personList">Person</label>
-    <input list="personList" name="personList">
-    <input type="checkbox">
-    <datalist id="personList">
-        <option value="Usain Bolt">
-        <option value="Michael Moore">
-        <option value="Barack Obama">
-        <option value="Osama Bin Laden">
-        <option value="Tina Turner">
-    </datalist>
-    <br>
-    <label for="actionList">Action</label>
-    <input list="actionList" name="actionList">
-    <input type="checkbox">
-    <datalist id="actionList">
-        <option value="Chases">
-        <option value="Plays">
-        <option value="Run">
-    </datalist>
-    <br>
-    <label for="objectList">Object</label>
-    <input list="objectList" name="objectList">
-    <input type="checkbox">
-    <datalist id="objectList">
-        <option value="Cheetah">
-        <option value="Fork">
-    </datalist>
-    <br>
-    <label for="cardList">Card</label>
-    <input list="cardList" name="cardList">
-    <input type="checkbox">
-    <datalist id="cardList">
-        <option value="Cheetah">
-        <option value="Fork">
-    </datalist>
+        <button class="btn" id="reveal">Reveal</button>
 
-    <button class="btn" id="reveal">
-
-    </button>
-
-    <button class="btn" id="next">
-
-    </button>
-
+        <button class="btn" id="next">Next</button>
+    </form>
 </template>
 
 <template data-id="matrix">
