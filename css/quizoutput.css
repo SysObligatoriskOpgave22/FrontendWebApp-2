@@ -1,11 +1,5 @@
 @charset "UTF-8";
-/* If you don't know or don't have SCSS installed, use quizoutput.csss´ */
-#card {
-  height: 25em;
-  width: 15em;
-  background-color: orange;
-}
-
+/* If you don't know or don't have SCSS installed, use quizoutput.css´ */
 .btn, #next, #reveal {
   position: relative;
   border-radius: 25%;
@@ -15,6 +9,45 @@
   font-weight: 900;
   color: white;
   border: none;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+.container__image {
+  position: absolute;
+  top: 5em;
+}
+.container__image img {
+  object-fit: fill;
+  height: 25em;
+  width: 19em;
+}
+
+.form--container {
+  position: relative;
+  top: 25em;
+  width: fit-content;
+  display: block;
+}
+.form--container label {
+  text-align: right;
+  display: inline-block;
+  width: 100px;
+  margin-right: 8px;
+}
+.form--container input {
+  margin: 10px 0 0 0;
+}
+.form--container input[type=checkbox] {
+  margin-left: 10px;
+}
+
+.btn-container {
+  height: fit-content;
+  transform: translate(22em, -5em);
 }
 
 #reveal {
