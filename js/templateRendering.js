@@ -11,6 +11,14 @@ function renderMenuItems(evt) {
             console.log("home")
             break
         }
+        case "quiz" : {
+            console.log("quiz")
+            break
+        }
+        case "matrix" : {
+            console.log("matrix")
+            break
+        }
     }
 }
 
