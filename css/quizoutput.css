@@ -1,8 +1,5 @@
-
-
-/* Do not put anything ins this file. */
-
-
+@charset "UTF-8";
+/* If you don't know or don't have SCSS installed, use quizoutput.csss´ */
 #card {
   height: 25em;
   width: 15em;
@@ -10,9 +7,14 @@
 }
 
 .btn, #next, #reveal {
+  position: relative;
   border-radius: 25%;
   padding: 5px 10px;
-  height: 50px;
+  height: 3em;
+  width: 5em;
+  font-weight: 900;
+  color: white;
+  border: none;
 }
 
 #reveal {
