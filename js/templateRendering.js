@@ -1,4 +1,5 @@
 import { renderTemplate, setActive, showPage } from "./Utility.js"
+import { drawMatrix } from "./matrix.js";
 
 function renderMenuItems(evt) {
     const element = evt.target
@@ -11,9 +12,13 @@ function renderMenuItems(evt) {
             console.log("home")
             break
         }
+        case "matrix" : {
+            document.getElementById("pao-matrix-cards").innerHTML = drawMatrix()
+            break
+        }
     }
 }
 
 document.getElementById("menu").onclick = renderMenuItems;
-showPage("about") //Set the default page to render
+showPage("matrix") //Set the default page to render
 

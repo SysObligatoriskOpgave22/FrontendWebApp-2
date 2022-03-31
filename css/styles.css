@@ -1,0 +1,28 @@
+#pao-matrix-cards div {
+    border: 1px solid black;
+}
+
+.row {
+    display: flex;
+}
+
+.row0 {
+    background-color: darkred;
+}
+
+.row1 {
+    background-color: blue;
+}
+
+.row2 {
+    background-color: darkred;
+}
+
+.row3 {
+    background-color: blue;
+}
+
+.card-img {
+    width: 100px;
+    height: 160px;
+}
