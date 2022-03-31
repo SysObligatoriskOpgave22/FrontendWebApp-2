@@ -1,0 +1,28 @@
+
+/* If you don't know or don't have SCSS installed, use quizoutput.csss´ */
+
+#card {
+    height: 25em;
+    width: 15em;
+    background-color: orange;
+}
+
+.btn {
+    position: relative;
+    border-radius: 25%;
+    padding: 5px 10px;
+    height: 3em;
+    width: 5em;
+    font-weight: 900;
+    color: white;
+    border: none;
+}
+
+#reveal {
+    @extend .btn;
+    background-color: red;
+}
+#next {
+    @extend .btn;
+    background-color: green;
+}

@@ -14,11 +14,21 @@ function renderMenuItems(evt) {
         }
         case "matrix" : {
             document.getElementById("pao-matrix-cards").innerHTML = drawMatrix()
+        break
+        }
+        case "quiz" : {
+            console.log("quiz")
+            document.getElementById("next").onclick = test
             break
         }
     }
 }
 
 document.getElementById("menu").onclick = renderMenuItems;
-showPage("matrix") //Set the default page to render
+showPage("quiz") //Set the default page to render
 
+
+function test(){
+    console.log("Next card")
+
+}
