@@ -13,14 +13,17 @@
     border: none;
     cursor: pointer;
 }
-
+// section container
 .container {
     display: flex;
     justify-content: center;
+    height: 100vh;
+    width: 100vw;
 
     &__image {
         position: absolute;
-        top: 5em;
+        top: 8em;
+        transform: translateX(35px);
 
         img {
             object-fit: fill;
@@ -29,8 +32,10 @@
         }
     }
 }
+// section form container
 .form--container {
     position: relative;
+    margin-top: 5px;
     top: 25em;
     width: fit-content;
     display: block;

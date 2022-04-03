@@ -15,10 +15,13 @@
 .container {
   display: flex;
   justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 .container__image {
   position: absolute;
-  top: 5em;
+  top: 8em;
+  transform: translateX(35px);
 }
 .container__image img {
   object-fit: fill;
@@ -28,6 +31,7 @@
 
 .form--container {
   position: relative;
+  margin-top: 5px;
   top: 25em;
   width: fit-content;
   display: block;
