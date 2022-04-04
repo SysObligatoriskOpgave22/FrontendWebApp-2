@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* If you don't know or don't have SCSS installed, use quizoutput.css´ */
+.btn, #reveal, #next {
+  position: relative;
+  border-radius: 25%;
+  padding: 5px 10px;
+  height: 3em;
+  width: 5em;
+  font-weight: 900;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container__image {
+  position: absolute;
+  top: 8em;
+  -webkit-transform: translateX(35px);
+          transform: translateX(35px);
+}
+
+.container__image img {
+  -o-object-fit: fill;
+     object-fit: fill;
+  height: 25em;
+  width: 19em;
+}
+
+.form--container {
+  position: relative;
+  margin-top: 5px;
+  top: 25em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
+}
+
+.form--container label {
+  text-align: right;
+  display: inline-block;
+  width: 100px;
+  margin-right: 8px;
+}
+
+.form--container input {
+  margin: 10px 0 0 0;
+}
+
+.form--container input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+.btn-container {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-transform: translate(22em, -5em);
+          transform: translate(22em, -5em);
+}
+
+#reveal {
+  background-color: red;
+}
+
+#next {
+  background-color: green;
+}
+/*# sourceMappingURL=quiz.css.map */
