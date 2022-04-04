@@ -1,5 +1,6 @@
 export function drawMatrix() {
     // Generate dummy cards
+    
     let cards = []
     for (let i = 0; i < 52; i++) { 
         cards[i] = {name: `name ${i}`, picture: "h2"}
@@ -10,8 +11,8 @@ export function drawMatrix() {
     cards.forEach((card, index)=>{
         html += `<div class="card"><div id="person-name">${card.name}</div>
                 <img class="card-img" src="https://learningisliving.dk/wp-content/uploads/2021/11/pao-classic-${card.picture}.jpg"></img>
-                <div id="person-action">action</div>
-                <div id="object">Object</div></div>`
+                <div class="person-action">action</div>
+                <div class="object">Object</div></div>`
         if ((index+1) % 13 == 0) {
             html += "</div>"
             if ((index+1) < 53) {

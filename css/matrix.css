@@ -1,9 +1,10 @@
-#pao-matrix-cards div {
-    border: 1px solid black;
+.matrix-container {
+    text-align: center;
 }
 
 .row {
-    display: flex;
+    display: inline-flex;
+    border: 1px solid black;
 }
 
 .row0 {
