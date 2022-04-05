@@ -1,5 +1,5 @@
 // import { SERVER } from "../settings.js"
-import { handleHttpErrors } from "./Utility.js"
+import {handleHttpErrors} from "./Utility.js"
 
 const SERVER = "http://localhost:8080/"
 
@@ -31,37 +31,70 @@ async function fetchDeck() {
 }
 
 // returns random deck in json array
-async function fetchRandomDeck() {
-    try {
-        const randomCards = await fetch(SERVER + "cards/random")
+// section fetchDeck
+// returns ordered deck in json array
+ // returns random deck in json array
+        // section fetch RandomDeck
+
+export async function fetchRandomDeck() {
+try {
+    const randomCards = await fetch(SERVER + "cards/random")
             .then(res => handleHttpErrors(res))
             .then(randomCards => {
                 console.log(randomCards)
-            })
-        return randomCards
 
-    } catch (err) {
-        console.error((err.message))
-        if (err.apiError) {
-            console.error("Full API error: ", err.apiError)
-        }
-    }
+                const personList = document.getElementById("personList")
+
+                const actionList = document.getElementById("actionList")
+                const objectList = document.getElementById("objectList")
+
+                const cardList = document.getElementById("cardList")
+
+                const imageContainer = document.getElementById("image")
+
+                let image = document.createElement("img")
+                image.src = randomCards[0].imageUrl
+                     imageContainer.appendChild(image)
+
+
+                    for (let i = 0; i < randomCards.length; i++) {
+                        let personOption = document.createElement("option")
+                        personOption.innerText = randomCards[i].person
+                        personList.appendChild(personOption)
+                        let actionOption = document.createElement("option")
+                        actionOption.innerText = randomCards[i].action
+                        actionList.appendChild(actionOption)
+
+                        let objectOption = document.createElement("option")
+                        objectOption.innerText = randomCards[i].object
+                        objectList.appendChild(objectOption)
+                        let cardOption = document.createElement("option")
+                        cardOption.innerText = randomCards[i].rank + " of " + randomCards[i].suit
+                        cardList.appendChild(cardOption)
+                    }
+
+                })
+                return randomCards
+            } catch (err) {
+                console.error(err.message)
+            }
+
 }
 
 // returns single card form endpoint id
-async function fetchCard(id) {
-    try {
-        const card = await fetch(SERVER + `cards/${id}`)
-            .then(res => handleHttpErrors(res))
-            .then(card => {
-                console.log(card)
-            })
-        return card
+    async function fetchCard(id) {
+        try {
+            const card = await fetch(SERVER + `cards/${id}`)
+                .then(res => handleHttpErrors(res))
+                .then(card => {
+                    console.log(card)
+                })
+            return card
 
-    } catch (err) {
-        console.error((err.message))
-        if (err.apiError) {
-            console.error("Full API error: ", err.apiError)
+        } catch (err) {
+            console.error((err.message))
+            if (err.apiError) {
+                console.error("Full API error: ", err.apiError)
+            }
         }
     }
-}
