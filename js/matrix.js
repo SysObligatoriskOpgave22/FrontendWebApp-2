@@ -1,3 +1,20 @@
+export function numbers(){
+    let numbers = ["Ace"]
+    for (let i = 2; i <=10; i++) {
+     numbers.push(i);
+    }
+    numbers.push("jack")
+    numbers.push("queen")
+    numbers.push("king")
+    let html ='<div class= "row">'
+    numbers.forEach(number=> html+= `<div class= number>${number}</div>`)
+     html+="</div>"
+
+    return html;
+ }
+ 
+
+
 export function drawMatrix() {
     // Generate dummy cards
     
