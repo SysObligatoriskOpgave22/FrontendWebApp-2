@@ -1,5 +1,5 @@
 import { renderTemplate, setActive, showPage } from "./Utility.js"
-import { drawMatrix, numbers } from "./matrix.js";
+import { category, drawMatrix, numbers } from "./matrix.js";
 import { cardsHandler } from "./fetchACard.js"
 
 function renderMenuItems(evt) {
@@ -16,6 +16,7 @@ function renderMenuItems(evt) {
         case "matrix" : {
             document.getElementById("pao-matrix-cards").innerHTML = drawMatrix()
             document.getElementById("matrix-headers").innerHTML=numbers()
+            document.getElementById("matrix-category").innerHTML=category()
         break
         }
         case "quiz" : {

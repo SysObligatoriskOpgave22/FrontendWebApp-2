@@ -30,4 +30,9 @@
 
 .number {
     width: 100px;
+    border: 1px solid black;
+}
+.category {
+    width: 200px;
+    border: 1px solid black;
 }

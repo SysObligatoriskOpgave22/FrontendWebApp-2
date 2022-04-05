@@ -12,6 +12,32 @@ export function numbers(){
 
     return html;
  }
+
+ export function category(){
+     let categories = []
+
+    categories.push("sport athlete")
+    categories.push("movie star")
+    categories.push("controversiaal")
+    categories.push("brain & beauty")
+    categories.push("powerful")
+    categories.push("religious")
+    categories.push("top celeberity")
+
+    let html='<div class="row">'
+    categories.forEach(category=>
+         {
+            if(category=="religious"){
+                html+=`<div class=number>${category}</div>` 
+            }
+            else{ html+=`<div class=category>${category}</div>`}
+           
+            
+            })
+
+    html+="</div>"
+    return html
+ }
  
 
 
