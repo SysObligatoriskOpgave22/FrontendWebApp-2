@@ -10,6 +10,10 @@ export function cardsHandler() {
 
 }
 
+export function resetQuiz(){
+    fetchRandomDeck()
+}
+
 // returns ordered deck in json array
 async function fetchDeck() {
     try {

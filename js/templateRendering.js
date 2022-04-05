@@ -1,6 +1,6 @@
 import { renderTemplate, setActive, showPage } from "./Utility.js"
 import { category, drawMatrix, numbers } from "./matrix.js";
-import { cardsHandler, fetchRandomDeck} from "./fetchACard.js"
+import { cardsHandler, resetQuiz} from "./fetchACard.js"
 
 function renderMenuItems(evt) {
     const element = evt.target
@@ -23,7 +23,7 @@ function renderMenuItems(evt) {
             console.log("quiz")
             cardsHandler()
             document.getElementById("next").onclick = test
-            document.getElementById("reset").onclick = fetchRandomDeck()
+            document.getElementById("reset").onclick = resetQuiz()
 
             break
         }
