@@ -1,7 +1,7 @@
 // import { SERVER } from "../settings.js"
 import {handleHttpErrors} from "./Utility.js"
 
-const SERVER = "http://localhost:8080/"
+const SERVER = "https://mindtrainer.azurewebsites.net/api/"
 
 export function cardsHandler() {
     document.onload = fetchDeck();
@@ -29,6 +29,22 @@ async function fetchDeck() {
         }
     }
 }
+export function quiz(e){
+    e.preventDefault()
+    const card = {}
+    card.person = document.getElementById("personInput").value
+    card.action = document.getElementById("actionInput").value
+    card.object = document.getElementById("objectInput").value
+    card.card = document.getElementById("cardInput").value
+    document.getElementById("testContent").innerText = JSON.stringify(card,null,2)
+        .replace(/"/g,"")
+        .replace(/{/,"")
+        .replace(/}/,"")
+        .replace(/,/g,"")
+    console.log(card)
+
+}
+
 
 // section fetch RandomDeck
 export async function fetchRandomDeck() {
@@ -45,11 +61,6 @@ export async function fetchRandomDeck() {
 
                 const imageContainer = document.getElementById("image")
 
-                let image = document.createElement("img")
-                image.src = randomCards[0].imageUrl
-                imageContainer.appendChild(image)
-
-
                 for (let i = 0; i < randomCards.length; i++) {
                     let personOption = document.createElement("option")
                     personOption.innerText = randomCards[i].person
@@ -63,10 +74,12 @@ export async function fetchRandomDeck() {
                     objectOption.innerText = randomCards[i].object
                     objectList.appendChild(objectOption)
                     let cardOption = document.createElement("option")
-                    cardOption.innerText = randomCards[i].rank + " of " + randomCards[i].suit
+                    cardOption.innerText = randomCards[i].rank + " OF " + randomCards[i].suit
                     cardList.appendChild(cardOption)
                 }
-
+                    let image = document.createElement("img")
+                    image.src = randomCards[0].imageUrl
+                    imageContainer.appendChild(image)
             })
         return randomCards
     } catch (err) {

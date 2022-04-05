@@ -56,6 +56,11 @@
 <template data-id="quiz">
     <h2>Quiz</h2>
 
+    <style>
+        body{
+            text-transform: capitalize;
+        }
+    </style>
     <div class="container">
         <div class="container__image" id="image">
         </div>
@@ -65,7 +70,7 @@
                 <input list="personList" id="personInput" name="personList">
                 <input type="checkbox">
                 <datalist id="personList">
-                    <option hidden></option>
+                    <option value=""></option>
                 </datalist>
                 <br>
                 <label for="actionList">Action</label>
@@ -88,7 +93,7 @@
                 <datalist id="cardList">
                     <option hidden></option>
                 </datalist>
-                <button type="submit">Submit</button>
+                <button id="submit" type="submit">Submit</button>
             </form>
             <pre id="testContent"></pre>
             <div class="btn-container">

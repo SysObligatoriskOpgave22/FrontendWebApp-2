@@ -1,7 +1,6 @@
 import { renderTemplate, setActive, showPage } from "./Utility.js"
 import { category, drawMatrix, numbers } from "./matrix.js";
-import {cardsHandler, fetchRandomDeck} from "./fetchACard.js"
-import {quiz} from "./quiz.js";
+import {cardsHandler, fetchRandomDeck, quiz} from "./fetchACard.js"
 
 function renderMenuItems(evt) {
     const element = evt.target
@@ -22,8 +21,8 @@ function renderMenuItems(evt) {
         }
         case "quiz" : {
             console.log("quiz")
+            document.getElementById("submit").onclick = quiz
             fetchRandomDeck()
-            document.getElementById("next").onclick = quiz()
             break
         }
     }
