@@ -56,48 +56,46 @@
 <template data-id="quiz">
     <h2>Quiz</h2>
 
+    <style>
+        body{
+            text-transform: capitalize;
+        }
+    </style>
     <div class="container">
         <div class="container__image" id="image">
-            <img src="https://videnskab.dk/files/article_media/usain_bolt_erik_van_leeuwen.jpg" alt="usain">
         </div>
         <div class="form--container">
             <form>
                 <label for="personList">Person</label>
-                <input list="personList" name="personList">
+                <input list="personList" id="personInput" name="personList">
                 <input type="checkbox">
                 <datalist id="personList">
-                    <option value="Usain Bolt">
-                    <option value="Michael Moore">
-                    <option value="Barack Obama">
-                    <option value="Osama Bin Laden">
-                    <option value="Tina Turner">
+                    <option value=""></option>
                 </datalist>
                 <br>
                 <label for="actionList">Action</label>
-                <input list="actionList" name="actionList">
+                <input list="actionList" id="actionInput" name="actionList">
                 <input type="checkbox">
                 <datalist id="actionList">
-                    <option value="Chases">
-                    <option value="Plays">
-                    <option value="Run">
+                    <option hidden></option>
                 </datalist>
                 <br>
                 <label for="objectList">Object</label>
-                <input list="objectList" name="objectList">
+                <input list="objectList" id="objectInput" name="objectList">
                 <input type="checkbox">
                 <datalist id="objectList">
-                    <option value="Cheetah">
-                    <option value="Fork">
+                    <<option hidden></option>
                 </datalist>
                 <br>
                 <label for="cardList">Card</label>
-                <input list="cardList" name="cardList">
+                <input list="cardList" id="cardInput" name="cardList">
                 <input type="checkbox">
                 <datalist id="cardList">
-                    <option value="Ace of Spades">
-                    <option value="King of Hearts">
+                    <option hidden></option>
                 </datalist>
+                <button id="submit" type="submit">Submit</button>
             </form>
+            <pre id="testContent"></pre>
             <div class="btn-container">
                 <button class="btn" id="reveal">Reveal</button>
                 <button class="btn__next" id="next">Next</button>

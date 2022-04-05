@@ -1,7 +1,7 @@
 // import { SERVER } from "../settings.js"
-import { handleHttpErrors } from "./Utility.js"
+import {handleHttpErrors} from "./Utility.js"
 
-const SERVER = "http://localhost:8080/"
+const SERVER = "https://mindtrainer.azurewebsites.net/api/"
 
 export function cardsHandler() {
     document.onload = fetchDeck();
@@ -29,22 +29,61 @@ async function fetchDeck() {
         }
     }
 }
+export function quiz(e){
+    e.preventDefault()
+    const card = {}
+    card.person = document.getElementById("personInput").value
+    card.action = document.getElementById("actionInput").value
+    card.object = document.getElementById("objectInput").value
+    card.card = document.getElementById("cardInput").value
+    document.getElementById("testContent").innerText = JSON.stringify(card,null,2)
+        .replace(/"/g,"")
+        .replace(/{/,"")
+        .replace(/}/,"")
+        .replace(/,/g,"")
+    console.log(card)
 
-// returns random deck in json array
-async function fetchRandomDeck() {
+}
+
+
+// section fetch RandomDeck
+export async function fetchRandomDeck() {
     try {
         const randomCards = await fetch(SERVER + "cards/random")
             .then(res => handleHttpErrors(res))
             .then(randomCards => {
                 console.log(randomCards)
+
+                const personList = document.getElementById("personList")
+                const actionList = document.getElementById("actionList")
+                const objectList = document.getElementById("objectList")
+                const cardList = document.getElementById("cardList")
+
+                const imageContainer = document.getElementById("image")
+
+                for (let i = 0; i < randomCards.length; i++) {
+                    let personOption = document.createElement("option")
+                    personOption.innerText = randomCards[i].person
+                    personList.appendChild(personOption)
+
+                    let actionOption = document.createElement("option")
+                    actionOption.innerText = randomCards[i].action
+                    actionList.appendChild(actionOption)
+
+                    let objectOption = document.createElement("option")
+                    objectOption.innerText = randomCards[i].object
+                    objectList.appendChild(objectOption)
+                    let cardOption = document.createElement("option")
+                    cardOption.innerText = randomCards[i].rank + " OF " + randomCards[i].suit
+                    cardList.appendChild(cardOption)
+                }
+                    let image = document.createElement("img")
+                    image.src = randomCards[0].imageUrl
+                    imageContainer.appendChild(image)
             })
         return randomCards
-
     } catch (err) {
-        console.error((err.message))
-        if (err.apiError) {
-            console.error("Full API error: ", err.apiError)
-        }
+        console.error(err.message)
     }
 }
 
