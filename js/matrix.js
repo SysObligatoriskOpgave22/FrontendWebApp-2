@@ -6,8 +6,8 @@ export function numbers(){
     numbers.push("jack")
     numbers.push("queen")
     numbers.push("king")
-    let html ='<div class= "row">'
-    numbers.forEach(number=> html+= `<div class= number>${number}</div>`)
+    let html ='<div class="row numbers padding">'
+    numbers.forEach(number=> html+= `<div class="number">${number}</div>`)
      html+="</div>"
 
     return html;
@@ -25,12 +25,13 @@ export function numbers(){
     categories.push("top celeberity")
 
     let html='<div class="row">'
-    categories.forEach(category=>
+    const colors=["green","lightblue","lightgray","orange","purple","gray","darkgoldenrod"]
+    categories.forEach((category,i)=>
          {
             if(category=="religious"){
-                html+=`<div class=number>${category}</div>` 
+                html+=`<div class="number padding" style="background-color: ${colors[i]};">${category.toUpperCase()}</div>` 
             }
-            else{ html+=`<div class=category>${category}</div>`}
+            else{ html+=`<div class="category padding" style="background-color: ${colors[i]};">${category.toUpperCase()}</div>`}
            
             
             })
@@ -52,10 +53,10 @@ export function drawMatrix() {
     let html = `<div class="row row${rowNumber}">`
     
     cards.forEach((card, index)=>{
-        html += `<div class="card"><div id="person-name">${card.name}</div>
+        html += `<div class="card"><div class="padding">${card.name}</div>
                 <img class="card-img" src="https://learningisliving.dk/wp-content/uploads/2021/11/pao-classic-${card.picture}.jpg"></img>
-                <div class="person-action">action</div>
-                <div class="object">Object</div></div>`
+                <div class="padding border-bottom">action</div>
+                <div class="padding">Object</div></div>`
         if ((index+1) % 13 == 0) {
             html += "</div>"
             if ((index+1) < 53) {
