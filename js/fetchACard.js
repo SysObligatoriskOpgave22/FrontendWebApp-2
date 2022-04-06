@@ -83,6 +83,27 @@ async function fetchCard(id) {
 }
 
 
+export function reveal(){
+    const evt = new Event("change")
+    let personCheck = document.getElementById("personCheck");
+    let actionCheck = document.getElementById("actionCheck");
+    let objectCheck = document.getElementById("objectCheck");
+    let cardCheck = document.getElementById("cardCheck");
+
+    document.getElementById("reveal").addEventListener('click', function() {
+        personCheck.checked = !personCheck.checked;
+        actionCheck.checked = !actionCheck.checked;
+        objectCheck.checked = !objectCheck.checked;
+        cardCheck.checked = !cardCheck.checked;
+        personCheck.dispatchEvent(evt);
+        actionCheck.dispatchEvent(evt);
+        objectCheck.dispatchEvent(evt);
+        cardCheck.dispatchEvent(evt);
+    });
+
+}
+
+
 export function resetQuiz(){
     fetchRandomDeck()
 }
