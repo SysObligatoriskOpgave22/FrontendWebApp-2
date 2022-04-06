@@ -15,8 +15,8 @@ function renderMenuItems(evt) {
         }
         case "matrix" : {
             document.getElementById("pao-matrix-cards").innerHTML = drawMatrix()
-            document.getElementById("matrix-headers").innerHTML=numbers()
-            document.getElementById("matrix-category").innerHTML=category()
+            document.getElementById("card-values").innerHTML=numbers()
+            document.getElementById("card-categories").innerHTML=category()
         break
         }
         case "quiz" : {

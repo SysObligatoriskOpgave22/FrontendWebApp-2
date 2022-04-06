@@ -1,26 +1,23 @@
 .matrix-container {
     text-align: center;
+    color: white;
+}
+.matrix-container h2 {
+    color: black
 }
 
 .row {
     display: inline-flex;
-    border: 1px solid black;
+    border-bottom: 1px solid white;
+    /* border: 1px solid black; */
 }
 
-.row0 {
+.row0, .row2 {
     background-color: darkred;
 }
 
-.row1 {
-    background-color: blue;
-}
-
-.row2 {
-    background-color: darkred;
-}
-
-.row3 {
-    background-color: blue;
+.row1, .row3 {
+    background-color: black;
 }
 
 .card-img {
@@ -30,9 +27,20 @@
 
 .number {
     width: 100px;
-    border: 1px solid black;
 }
 .category {
     width: 200px;
-    border: 1px solid black;
+}
+
+.numbers {
+    background-color: black;
+    color: white;
+}
+
+.padding {
+    padding: 5px 0 5px 0;
+}
+
+.border-bottom {
+    border-bottom: 1px solid gray;
 }
