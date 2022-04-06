@@ -1,30 +1,78 @@
 // import { SERVER } from "../settings.js"
-import {handleHttpErrors} from "./Utility.js"
+import {getRandomInt, handleHttpErrors, makeOptions} from "./Utility.js"
 
 const SERVER = "https://mindtrainer.azurewebsites.net/api/"
 
-export function cardsHandler() {
-    document.onload = fetchDeck();
-    document.onload = fetchRandomDeck();
-    document.onload = fetchCard(1);
-
-}
-
-export function resetQuiz(){
-    fetchRandomDeck()
+export async function cardsHandler() {
+    const cards = await fetchDeck().then(res => res);
+    console.log(cards)
+    fetchCard(getRandomInt(42))
 }
 
 // returns ordered deck in json array
 async function fetchDeck() {
     try {
-        let cards = []
-        const deck = await fetch(SERVER + "cards/")
-            .then(res => handleHttpErrors(res))
-            .then(deck => {
-                console.log(deck)
-            })
-        return cards
+        return await fetch(SERVER + "cards/", makeOptions("GET"))
+            .then(handleHttpErrors)
+            .then(deck => { return deck; })
+    } catch (err) {
+        console.error((err.message))
+        if (err.apiError) {
+            console.error("Full API error: ", err.apiError)
+        }
+    }
+}
 
+// returns single card form endpoint id
+async function fetchCard(id) {
+    try {
+        const card = await fetch(SERVER + `cards/${id}`, makeOptions("GET"))
+            .then(res => handleHttpErrors(res))
+            .then(card => {
+                const image = `<img src=${card.imageUrl}>`
+                const person = card.person
+                const action = card.action
+                const object = card.object
+                const rankSuit = `${card.rank} + ${card.suit}`
+
+                document.getElementById("image").innerHTML = image;
+
+                document.getElementById('personCheck').addEventListener('change', e => {
+                    if(e.target.checked){
+                        document.getElementById('personInput').setAttribute('value', `${person}`)
+                    }
+                    else{
+                        document.getElementById('personInput').setAttribute('value', '')
+                    }
+                });
+                document.getElementById('actionCheck').addEventListener('change', e => {
+                    if(e.target.checked){
+                        document.getElementById('actionInput').setAttribute('value', `${action}`)
+                    }
+                    else{
+                        document.getElementById('actionInput').setAttribute('value', '')
+                    }
+                });
+                document.getElementById('objectCheck').addEventListener('change', e => {
+                    if(e.target.checked){
+                        document.getElementById('objectInput').setAttribute('value', `${object}`)
+                    }
+                    else{
+                        document.getElementById('objectInput').setAttribute('value', '')
+                    }
+                });
+                document.getElementById('cardCheck').addEventListener('change', e => {
+                    if(e.target.checked){
+                        document.getElementById('cardInput').setAttribute('value', `${rankSuit}`)
+                    }
+                    else{
+                        document.getElementById('cardInput').setAttribute('value', '')
+                    }
+                });
+
+
+            })
+        return card
 
     } catch (err) {
         console.error((err.message))
@@ -33,6 +81,12 @@ async function fetchDeck() {
         }
     }
 }
+
+
+export function resetQuiz(){
+    fetchRandomDeck()
+}
+
 export function quiz(e){
     e.preventDefault()
     const card = {}
@@ -56,7 +110,7 @@ export async function fetchRandomDeck() {
         const randomCards = await fetch(SERVER + "cards/random")
             .then(res => handleHttpErrors(res))
             .then(randomCards => {
-                console.log(randomCards)
+                // console.log(randomCards)
 
                 const personList = document.getElementById("personList")
                 const actionList = document.getElementById("actionList")
@@ -91,20 +145,6 @@ export async function fetchRandomDeck() {
     }
 }
 
-// returns single card form endpoint id
-async function fetchCard(id) {
-    try {
-        const card = await fetch(SERVER + `cards/${id}`)
-            .then(res => handleHttpErrors(res))
-            .then(card => {
-                console.log(card)
-            })
-        return card
 
-    } catch (err) {
-        console.error((err.message))
-        if (err.apiError) {
-            console.error("Full API error: ", err.apiError)
-        }
-    }
-}
+
+
