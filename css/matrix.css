@@ -12,16 +12,11 @@
     /* border: 1px solid black; */
 }
 
-.row0 {
-    background-color: darkred;
-    
-}
-
-.row1 {
+.row0, .row2 {
     background-color: darkred;
 }
 
-.row2, .row3 {
+.row1, .row3 {
     background-color: black;
 }
 
