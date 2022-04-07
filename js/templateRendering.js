@@ -27,7 +27,7 @@ function renderMenuItems(evt) {
             console.log("quiz")
             cardsHandler()
             document.getElementById("reveal").onclick = reveal
-            document.getElementById("next").onclick = test
+            //document.getElementById("next").onclick = nextImage
             document.getElementById("reset").onclick = resetQuiz()
             document.getElementById("submit").onclick = quiz
             // fetchRandomDeck()
