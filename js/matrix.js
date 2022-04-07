@@ -1,20 +1,15 @@
-export function numbers(){
-    let numbers = ["Ace"]
-    for (let i = 2; i <=10; i++) {
-     numbers.push(i);
+export function drawRanks(cards){
+    let html ='<div class="row ranks padding">'
+    // extract ranks
+    for (let i = 0; i <13; i++) {
+        html+= `<div class="rank">${cards[i].rank}</div>`
     }
-    numbers.push("jack")
-    numbers.push("queen")
-    numbers.push("king")
-    let html ='<div class="row numbers padding">'
-    numbers.forEach(number=> html+= `<div class="number">${number}</div>`)
-     html+="</div>"
-
+    html+="</div>"
     return html;
  }
 
  export function category(){
-     let categories = []
+    let categories = []
 
     categories.push("sport athlete")
     categories.push("movie star")
@@ -27,36 +22,29 @@ export function numbers(){
     let html='<div class="row">'
     const colors=["green","lightblue","lightgray","orange","purple","gray","darkgoldenrod"]
     categories.forEach((category,i)=>
-         {
+        {
             if(category=="religious"){
-                html+=`<div class="number padding" style="background-color: ${colors[i]};">${category.toUpperCase()}</div>` 
+                html+=`<div class="rank padding" style="background-color: ${colors[i]};">${category.toUpperCase()}</div>` 
             }
-            else{ html+=`<div class="category padding" style="background-color: ${colors[i]};">${category.toUpperCase()}</div>`}
-           
-            
-            })
+            else{
+                html+=`<div class="category padding" style="background-color: ${colors[i]};">${category.toUpperCase()}</div>`
+            }
+        })
 
     html+="</div>"
     return html
  }
  
-
-
-export function drawMatrix() {
-    // Generate dummy cards
-    
-    let cards = []
-    for (let i = 0; i < 52; i++) { 
-        cards[i] = {name: `name ${i}`, picture: "h2"}
-    }
-    let rowNumber = 0;
+export function drawMatrix(cards) {
+    let rowNumber = 0
     let html = `<div class="row row${rowNumber}">`
-    
+    cards[0].person = "A. Schwarzenegger" // TODO: correct at backend instead
+
     cards.forEach((card, index)=>{
-        html += `<div class="card"><div class="padding">${card.name}</div>
-                <img class="card-img" src="https://learningisliving.dk/wp-content/uploads/2021/11/pao-classic-${card.picture}.jpg"></img>
-                <div class="padding border-bottom">action</div>
-                <div class="padding">Object</div></div>`
+        html += `<div class="card"><div class="padding">${card.person}</div>
+                <img class="card-img" src="${card.imageUrl}"></img>
+                <div class="padding border-bottom">${card.action}</div>
+                <div class="padding">${card.object}</div></div>`
         if ((index+1) % 13 == 0) {
             html += "</div>"
             if ((index+1) < 53) {

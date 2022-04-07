@@ -1,0 +1,1 @@
+export const apiRoot = "https://mindtrainer.azurewebsites.net/api"
