@@ -1,6 +1,7 @@
-import { renderTemplate, setActive, showPage } from "./Utility.js"
-import { category, drawMatrix, numbers } from "./matrix.js";
+import { makeOptions, renderTemplate, setActive, showPage } from "./Utility.js"
+import { category, drawMatrix, drawRanks } from "./matrix.js";
 import {cardsHandler, fetchRandomDeck, quiz, resetQuiz} from "./fetchACard.js"
+import { apiRoot } from "./settings.js";
 
 function renderMenuItems(evt) {
     const element = evt.target
@@ -14,8 +15,11 @@ function renderMenuItems(evt) {
             break
         }
         case "matrix" : {
-            document.getElementById("pao-matrix-cards").innerHTML = drawMatrix()
-            document.getElementById("card-values").innerHTML=numbers()
+            // Fetch cards from API
+            fetch(`${apiRoot}/cards`,makeOptions("get")).then(res=>res.json()).then(c=>{
+                document.getElementById("card-ranks").innerHTML=drawRanks(c)
+                document.getElementById("pao-matrix-cards").innerHTML = drawMatrix(c)
+            })
             document.getElementById("card-categories").innerHTML=category()
         break
         }

@@ -20,19 +20,23 @@
     background-color: black;
 }
 
+.card {
+    font-size: 11px;
+}
+
 .card-img {
-    width: 100px;
+    width: 110px;
     height: 160px;
 }
 
-.number {
-    width: 100px;
+.rank {
+    width: 110px;
 }
 .category {
-    width: 200px;
+    width: 220px;
 }
 
-.numbers {
+.ranks {
     background-color: black;
     color: white;
 }
