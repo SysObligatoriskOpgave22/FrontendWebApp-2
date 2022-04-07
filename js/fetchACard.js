@@ -127,12 +127,11 @@ export function quiz(e){
 
 // section fetch RandomDeck
 export async function fetchRandomDeck() {
-    try {
+        try {
         const randomCards = await fetch(SERVER + "cards/random")
             .then(res => handleHttpErrors(res))
             .then(randomCards => {
-                // console.log(randomCards)
-
+                console.log(randomCards)
                 const personList = document.getElementById("personList")
                 const actionList = document.getElementById("actionList")
                 const objectList = document.getElementById("objectList")
@@ -159,13 +158,25 @@ export async function fetchRandomDeck() {
                     let image = document.createElement("img")
                     image.src = randomCards[0].imageUrl
                     imageContainer.appendChild(image)
+
+                    document.getElementById("next").addEventListener('click', function(){
+                        
+                        var elementToRemove = document.getElementById("image")
+                        elementToRemove.firstChild.remove()
+                        randomCards.shift()
+                        console.log(randomCards)
+                        let image1 = document.createElement("img")
+                        image1.src = randomCards[0].imageUrl
+                        imageContainer.appendChild(image1)
+                        
+                        
+                        console.log(image1)
+                    })
             })
+            
         return randomCards
+        
     } catch (err) {
         console.error(err.message)
     }
 }
-
-
-
-
