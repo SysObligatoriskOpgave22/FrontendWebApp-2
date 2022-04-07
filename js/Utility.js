@@ -69,6 +69,10 @@ export async function handleHttpErrors(res) {
     return res.json()
 }
 
+export function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 
 
 

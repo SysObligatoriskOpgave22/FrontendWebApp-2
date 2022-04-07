@@ -1,7 +1,7 @@
 import { makeOptions, renderTemplate, setActive, showPage } from "./Utility.js"
 import { category, drawMatrix, drawRanks } from "./matrix.js";
-import {cardsHandler, fetchRandomDeck, quiz, resetQuiz} from "./fetchACard.js"
 import { apiRoot } from "./settings.js";
+import {cardsHandler, quiz, resetQuiz, reveal} from "./fetchACard.js"
 
 function renderMenuItems(evt) {
     const element = evt.target
@@ -26,10 +26,11 @@ function renderMenuItems(evt) {
         case "quiz" : {
             console.log("quiz")
             cardsHandler()
+            document.getElementById("reveal").onclick = reveal
             document.getElementById("next").onclick = test
             document.getElementById("reset").onclick = resetQuiz()
             document.getElementById("submit").onclick = quiz
-            fetchRandomDeck()
+            // fetchRandomDeck()
             break
         }
     }
