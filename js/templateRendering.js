@@ -1,5 +1,5 @@
 import { makeOptions, renderTemplate, setActive, showPage } from "./Utility.js"
-import { category, drawMatrix, drawRanks } from "./matrix.js";
+import { category, drawMatrix, drawRanks, drawSuits } from "./matrix.js";
 import { apiRoot } from "./settings.js";
 import {cardsHandler, quiz, resetQuiz, reveal} from "./fetchACard.js"
 
@@ -19,8 +19,9 @@ function renderMenuItems(evt) {
             fetch(`${apiRoot}/cards`,makeOptions("get")).then(res=>res.json()).then(c=>{
                 document.getElementById("card-ranks").innerHTML=drawRanks(c)
                 document.getElementById("pao-matrix-cards").innerHTML = drawMatrix(c)
-            })
+            }).then(()=>drawSuits())
             document.getElementById("card-categories").innerHTML=category()
+
         break
         }
         case "quiz" : {
