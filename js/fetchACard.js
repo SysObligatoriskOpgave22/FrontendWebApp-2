@@ -23,6 +23,8 @@ async function fetchDeck() {
     }
 }
 
+
+
 // returns single card form endpoint id
 async function fetchCard(id) {
     try {
@@ -83,6 +85,38 @@ async function fetchCard(id) {
 }
 
 
+export function counter (){
+    let button = document.getElementById("start")
+    let title = document.getElementById("title")
+    let time = 0;
+    console.log(time)
+    let myInterval = -1;
+
+    let startTime = Math.round(new Date().getTime()/1000)
+    console.log(startTime)
+    let endTime = Math.round(new Date().getTime()/1000)
+    console.log(endTime)
+    let finishTime = endTime - startTime;
+    console.log(finishTime)
+
+    button.addEventListener("click", function(Event){
+
+        if (myInterval == -1){
+            myInterval = setInterval(function(){
+                time ++;
+                title = time;
+            }, 1000);
+        } else {
+            clearInterval(myInterval);
+            myInterval = -1;
+        }
+        
+        
+    });
+    
+}
+
+
 export function reveal(){
     const evt = new Event("change")
     let personCheck = document.getElementById("personCheck");
@@ -136,7 +170,8 @@ export async function fetchRandomDeck() {
                 const actionList = document.getElementById("actionList")
                 const objectList = document.getElementById("objectList")
                 const cardList = document.getElementById("cardList")
-
+                let startTime = Date.now().toFixed(2) / 1000
+                    console.log(startTime)
                 const imageContainer = document.getElementById("image")
 
                 for (let i = 0; i < randomCards.length; i++) {
@@ -154,7 +189,10 @@ export async function fetchRandomDeck() {
                     let cardOption = document.createElement("option")
                     cardOption.innerText = randomCards[i].rank + " OF " + randomCards[i].suit
                     cardList.appendChild(cardOption)
+
+                
                 }
+                    
                     let image = document.createElement("img")
                     image.src = randomCards[0].imageUrl
                     imageContainer.appendChild(image)
@@ -166,10 +204,22 @@ export async function fetchRandomDeck() {
                         randomCards.shift()
                         console.log(randomCards)
                         let image1 = document.createElement("img")
+
+                        if(randomCards.length != 0){
                         image1.src = randomCards[0].imageUrl
                         imageContainer.appendChild(image1)
-                        
-                        
+                    
+                        }
+                        else {
+                            console.log("wedone")
+                            let endTime = Date.now().toFixed(2) / 1000
+                            console.log(endTime)
+                            let finishTime = (endTime - startTime).toFixed(2);
+                            console.log(finishTime)
+
+                            document.getElementById("finishtime").innerHTML = "Finish time: " + finishTime + " seconds"
+                             
+                        }
                         console.log(image1)
                     })
             })

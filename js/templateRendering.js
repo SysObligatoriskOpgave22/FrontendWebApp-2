@@ -30,6 +30,9 @@ function renderMenuItems(evt) {
             //document.getElementById("next").onclick = nextImage
             document.getElementById("reset").onclick = resetQuiz()
             document.getElementById("submit").onclick = quiz
+           // document.getElementById("start").onclick = counter
+        
+
             // fetchRandomDeck()
             break
         }
