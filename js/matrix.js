@@ -56,14 +56,16 @@ export function drawMatrix(cards) {
     html += "</div>"
     return html
 }
-
-export const drawSuits = ()=> {
-    const suits = ["Hearts","Spades","Diamonds","Clubs"]
+// draw suits to the left
+export const drawSuits = ()=>{
+    const suits = ["♥","♠","♦","♣"]
     let rows = document.querySelectorAll("#pao-matrix-cards .row")
     for (var i = 0; i < rows.length; i++) {
-        // console.log(row.className)
         let element = document.createElement("div")
+        element.classList.add("suit")
         element.innerText = suits[i]
+        if (i % 2 == 0) element.classList.add("red") // i even
+        else element.classList.add("black") // i odd
         rows[i].prepend(element)
     }
 }
