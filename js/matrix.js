@@ -69,3 +69,16 @@ export const drawSuits = ()=>{
         rows[i].prepend(element)
     }
 }
+
+export const addRowDescriptions = ()=>{
+    // in this order: Hearts, Spades, Diamonds, Clubs
+    const suitLabels = ["LOVE, GREAT, GOOD","HUMOUROUS, ABSURD","RICH, STYLISH, BLING","COOL, SERIOUS, CRAZY"]
+    const suitDescriptions = ["People who are likable.","People who makes you smile or wrinkle your nose.","People who like to shine.","People with an itch in the body or brain."]
+    let rows = document.querySelectorAll("#pao-matrix-cards .row")
+    for (var i = 0; i < rows.length; i++) {
+        let element = document.createElement("div")
+        element.classList.add("row-desc")
+        element.innerHTML = `<div class="mb-4">${suitLabels[i]}</div><div>${suitDescriptions[i]}</div>`
+        rows[i].append(element)
+    }
+}
