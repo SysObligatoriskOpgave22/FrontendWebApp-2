@@ -1,9 +1,15 @@
-.matrix-container {
+.matrix-container * * {
     text-align: center;
     color: white;
 }
+
 .matrix-container h2 {
-    color: black
+    text-align: center;
+    color: black;
+}
+
+#pao-matrix-cards {
+    /* text-align: center; */
 }
 
 .row {
@@ -47,4 +53,26 @@
 
 .border-bottom {
     border-bottom: 1px solid gray;
+}
+
+#card-categories, #card-ranks {
+    margin-left: 47px; /* this must be equal to the width of the suits elements minus 1px (border) */
+}
+
+.suit {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    font-size: 50px;
+    background-color: lightgray;
+    padding: 0 4px;
+    /* this must be equal to the width of the element */
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
 }

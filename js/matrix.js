@@ -41,17 +41,31 @@ export function drawMatrix(cards) {
     cards[0].person = "A. Schwarzenegger" // TODO: correct at backend instead
 
     cards.forEach((card, index)=>{
-        html += `<div class="card"><div class="padding">${card.person}</div>
-                <img class="card-img" src="${card.imageUrl}"></img>
-                <div class="padding border-bottom">${card.action}</div>
-                <div class="padding">${card.object}</div></div>`
-        if ((index+1) % 13 == 0) {
-            html += "</div>"
-            if ((index+1) < 53) {
-                rowNumber++
-                html += `<div class="row row${rowNumber}">`
-            }
+        html += `<div class="card">
+                    <div class="padding">${card.person}</div>
+                    <img class="card-img" src="${card.imageUrl}"></img>
+                    <div class="padding border-bottom">${card.action}</div>
+                    <div class="padding">${card.object}</div>
+                 </div>`
+        // Draw new matrix rows if not at end
+        if ((index+1) % 13 == 0 && (index+1) <= (52-13)) {
+            rowNumber++
+            html += `</div><div class="row row${rowNumber}">`
         }
     })
+    html += "</div>"
     return html
+}
+// draw suits to the left
+export const drawSuits = ()=>{
+    const suits = ["♥","♠","♦","♣"]
+    let rows = document.querySelectorAll("#pao-matrix-cards .row")
+    for (var i = 0; i < rows.length; i++) {
+        let element = document.createElement("div")
+        element.classList.add("suit")
+        element.innerText = suits[i]
+        if (i % 2 == 0) element.classList.add("red") // i even
+        else element.classList.add("black") // i odd
+        rows[i].prepend(element)
+    }
 }
